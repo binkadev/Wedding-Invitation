@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  /* Common variables */
+  --foreground: #3c2f2f;
+  
+  /* Base variables (App background) */
+  --bg-main: #fdf8f3;
+  --bg-alt: #fffaf3;
+  --primary: #5b3a29; /* Dark brown text */
+  --primary-light: #7b5e4b; /* Lighter brown text */
+  --accent: #c08a4b; /* Gold */
+  --accent-light: #e6b877; /* Light Gold */
+  --accent-pale: #eedfcc; /* Very light gold border/bg */
+  --accent-bg: #fff7ed; /* Card backgrounds */
+  --border-light: #f3e7d9;
+}
+
+/* Classic Theme */
+.theme-classic {
+  --bg-main: #ffffff;
+  --bg-alt: #fafafa;
+  --primary: #5b3a29;
+  --primary-light: #7b5e4b;
+  --accent: #c08a4b;
+  --accent-light: #e6b877;
+  --accent-pale: #eedfcc;
+  --accent-bg: #fff7ed;
+  --border-light: #f3e7d9;
+}
+
+/* Vietnamese Heritage Theme */
+.theme-heritage {
+  --bg-main: #eef6f2;
+  --bg-alt: #f6fbf8;
+  --primary: #174a43;
+  --primary-light: #3f6b64;
+  --accent: #0f766e;
+  --accent-light: #2a9d8f;
+  --accent-pale: #d9eee8;
+  --accent-bg: #eef7f4;
+  --border-light: #cde3dd;
+}
+
+/* Midnight Theme */
+.theme-midnight {
+  --bg-main: #0f1720;
+  --bg-alt: #132030;
+  --primary: #f5efe6;
+  --primary-light: #d4c6b4;
+  --accent: #d4af7a;
+  --accent-light: #e4c69b;
+  --accent-pale: rgba(212, 175, 122, 0.18);
+  --accent-bg: #172131;
+  --border-light: rgba(255, 255, 255, 0.12);
+}
+
+/* Elegance Theme – Minimalist Neoclassical */
+.theme-elegance {
+  --bg-main: #f8f6f1;
+  --bg-alt: #f3f0e8;
+  --primary: #2d2a26;
+  --primary-light: #4a453d;
+  --accent: #b39a6a;
+  --accent-light: #d4c5a9;
+  --accent-pale: rgba(179, 154, 106, 0.15);
+  --accent-bg: #faf8f4;
+  --border-light: rgba(179, 154, 106, 0.25);
+}
+
+@theme inline {
+  --color-foreground: var(--foreground);
+  --color-bg-main: var(--bg-main);
+  --color-bg-alt: var(--bg-alt);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-pale: var(--accent-pale);
+  --color-accent-bg: var(--accent-bg);
+  --color-border-light: var(--border-light);
+  
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* We will keep the default themes solid for now, or you can implement dark mode versions later */
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--foreground);
+  font-family: var(--font-body), "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+.font-display {
+  font-family: var(--font-display), "Times New Roman", serif;
+  letter-spacing: -0.02em;
+}
+
+.paper-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid #f3e7d9;
+  box-shadow: 0 18px 45px rgba(84, 61, 24, 0.08);
+  border-radius: 24px;
+}
+
+.animate-fade-in {
+  animation: fade-in-soft 1s ease both;
+}
+
+@keyframes fade-in-soft {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
