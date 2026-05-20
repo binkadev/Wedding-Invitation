@@ -9,6 +9,7 @@ type HeroProps = {
   weddingDate?: string | null
   weddingTime?: string | null
   backgroundImage?: string | null
+  backgroundPosition?: string | null
   guestName?: string | null
 }
 
@@ -40,6 +41,7 @@ export default function Hero({
   weddingDate,
   weddingTime,
   backgroundImage,
+  backgroundPosition,
   guestName,
 }: HeroProps) {
   const [showTitles, setShowTitles] = useState(false)
@@ -56,6 +58,7 @@ export default function Hero({
 
   const date = formatDate(weddingDate)
   const time = formatTime(weddingTime)
+  const heroBackgroundPosition = backgroundPosition?.trim() || 'center 35%'
 
   return (
     <section className="relative isolate min-h-screen overflow-hidden flex items-center justify-center text-center px-6 py-16">
@@ -63,12 +66,12 @@ export default function Hero({
         <div
           className="absolute inset-0"
           style={{
-  backgroundImage: backgroundImage
-    ? `linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url(${backgroundImage})`
-    : 'radial-gradient(circle at 20% 20%, rgba(255, 214, 170, 0.25), transparent 32%), radial-gradient(circle at 80% 0%, rgba(255, 182, 193, 0.2), transparent 35%), radial-gradient(circle at 50% 80%, rgba(255, 214, 170, 0.28), transparent 30%)',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center 65%',
-}}
+            backgroundImage: backgroundImage
+              ? `linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url(${backgroundImage})`
+              : 'radial-gradient(circle at 20% 20%, rgba(255, 214, 170, 0.25), transparent 32%), radial-gradient(circle at 80% 0%, rgba(255, 182, 193, 0.2), transparent 35%), radial-gradient(circle at 50% 80%, rgba(255, 214, 170, 0.28), transparent 30%)',
+            backgroundSize: 'cover',
+            backgroundPosition: heroBackgroundPosition,
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/45 to-black/55" />
       </div>
