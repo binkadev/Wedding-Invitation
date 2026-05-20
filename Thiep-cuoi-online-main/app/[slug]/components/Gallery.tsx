@@ -8,6 +8,7 @@ type GalleryImage = {
   id: number | string
   image_url: string
   caption?: string | null
+  objectPosition?: string
 }
 
 type GalleryProps = {
@@ -59,6 +60,9 @@ export default function Gallery({ images }: GalleryProps) {
                     sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     quality={92}
                     className="object-cover transition-transform duration-[800ms] group-hover:scale-110 ease-out"
+                    style={{
+                      objectPosition: img.objectPosition || 'center center',
+                    }}
                   />
                 </div>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
@@ -73,14 +77,12 @@ export default function Gallery({ images }: GalleryProps) {
         </div>
       </div>
 
-      {/* Lightbox */}
       {selectedIndex !== null && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md animate-fade-in"
           style={{ animationDuration: '0.3s' }}
           onClick={closeLightbox}
         >
-          {/* Nút đóng */}
           <button
             className="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white p-2 hover:bg-white/10 rounded-full transition-all z-[110]"
             onClick={closeLightbox}
@@ -92,7 +94,6 @@ export default function Gallery({ images }: GalleryProps) {
             </svg>
           </button>
 
-          {/* Nút lùi */}
           <button
             className="absolute left-2 md:left-8 text-white/70 hover:text-white p-2 md:p-3 hover:bg-white/10 rounded-full transition-all z-[110]"
             onClick={goToPrev}
@@ -103,7 +104,6 @@ export default function Gallery({ images }: GalleryProps) {
             </svg>
           </button>
 
-          {/* Nút tiến */}
           <button
             className="absolute right-2 md:right-8 text-white/70 hover:text-white p-2 md:p-3 hover:bg-white/10 rounded-full transition-all z-[110]"
             onClick={goToNext}
@@ -114,17 +114,15 @@ export default function Gallery({ images }: GalleryProps) {
             </svg>
           </button>
 
-          {/* Container ảnh */}
           <div
             className="relative flex flex-col items-center justify-center w-full max-w-5xl h-full p-4 md:p-12"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Bộ đếm ảnh trên cùng */}
             <div className="absolute top-8 left-0 right-0 text-center text-white/60 text-sm tracking-[0.2em] font-medium z-[110]">
               {selectedIndex + 1} / {images.length}
             </div>
 
-            <div 
+            <div
               key={selectedIndex}
               className="relative w-full h-[75vh] md:h-[85vh] flex items-center justify-center mt-8 animate-fade-in-scale"
             >
