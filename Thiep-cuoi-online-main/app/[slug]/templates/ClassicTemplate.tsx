@@ -11,100 +11,93 @@ import AudioPlayer from '../components/AudioPlayer'
 import GiftSection from '../components/GiftSection'
 import { TemplateProps } from './types'
 
-export default function ClassicTemplate({
-    couple,
-    gallery,
-    wishes,
-    weddingGift,
-    locations,
-}: TemplateProps) {
-    const manualHeroBackground = '/wedding/hero.jpg'
+const manualHeroBackground = '/wedding/hero.jpg'
+const manualHeroPosition = 'center 35%'
 
 const manualGallery = [
-  { id: 'manual-01', image_url: '/wedding/1.jpg', caption: 'Khoảnh khắc của chúng mình' },
-  { id: 'manual-02', image_url: '/wedding/2.jpg', caption: 'Cùng nhau đi qua những ngày đẹp nhất' },
-  { id: 'manual-03', image_url: '/wedding/3.jpg', caption: 'Ngày hạnh phúc' },
-  { id: 'manual-04', image_url: '/wedding/4.jpg', caption: 'Yêu thương và bình yên' },
-  { id: 'manual-05', image_url: '/wedding/5.jpg', caption: 'Mãi bên nhau' },
-  { id: 'manual-06', image_url: '/wedding/6.jpg', caption: 'Kỷ niệm của chúng mình' },
-  { id: 'manual-07', image_url: '/wedding/7.jpg', caption: 'Một hành trình mới' },
-  { id: 'manual-08', image_url: '/wedding/8.jpg', caption: 'The beginning of forever' },
-  { id: 'manual-09', image_url: '/wedding/9.jpg', caption: 'The beginning of forever' },
-  { id: 'manual-10', image_url: '/wedding/10.jpg', caption: 'The beginning of forever' },
+  { id: 'manual-01', image_url: '/wedding/1.jpg', caption: 'Khoảnh khắc của chúng mình', objectPosition: 'center center' },
+  { id: 'manual-02', image_url: '/wedding/2.jpg', caption: 'Cùng nhau đi qua những ngày đẹp nhất', objectPosition: 'center 35%' },
+  { id: 'manual-03', image_url: '/wedding/3.jpg', caption: 'Ngày hạnh phúc', objectPosition: 'center 40%' },
+  { id: 'manual-04', image_url: '/wedding/4.jpg', caption: 'Yêu thương và bình yên', objectPosition: 'center center' },
+  { id: 'manual-05', image_url: '/wedding/5.jpg', caption: 'Mãi bên nhau', objectPosition: 'center 30%' },
+  { id: 'manual-06', image_url: '/wedding/6.jpg', caption: 'Kỷ niệm của chúng mình', objectPosition: 'center 45%' },
+  { id: 'manual-07', image_url: '/wedding/7.jpg', caption: 'Một hành trình mới', objectPosition: 'center center' },
+  { id: 'manual-08', image_url: '/wedding/8.jpg', caption: 'The beginning of forever', objectPosition: 'center 35%' },
+  { id: 'manual-09', image_url: '/wedding/9.jpg', caption: 'The beginning of forever', objectPosition: 'center 40%' },
+  { id: 'manual-10', image_url: '/wedding/10.jpg', caption: 'The beginning of forever', objectPosition: 'center center' },
 ]
 
-const displayGallery = manualGallery
+export default function ClassicTemplate({
+  couple,
+  wishes,
+  weddingGift,
+  locations,
+}: TemplateProps) {
+  const themeClass =
+    couple.theme && couple.theme !== 'classic' ? `theme-${couple.theme}` : 'theme-classic'
 
-const heroBackground = manualHeroBackground
+  return (
+    <div className={`bg-white text-primary overflow-hidden ${themeClass}`}>
+      <PetalEffect />
 
-    const themeClass =
-        couple.theme && couple.theme !== 'classic' ? `theme-${couple.theme}` : 'theme-classic'
+      <Hero
+        brideName={couple.bride_name}
+        groomName={couple.groom_name}
+        introDescription={couple.intro_description}
+        weddingDate={couple.wedding_date}
+        weddingTime={couple.wedding_time}
+        backgroundImage={manualHeroBackground}
+        backgroundPosition={manualHeroPosition}
+      />
 
-    return (
-        <div className={`bg-white text-primary overflow-hidden ${themeClass}`}>
-            <PetalEffect />
+      <div className="bg-white">
+        <LocationSection
+          weddingDate={couple.wedding_date}
+          weddingTime={couple.wedding_time}
+          brideInfo={{
+            title: locations?.bride_event_title,
+            location: locations?.bride_location,
+            address: locations?.bride_address,
+            mapEmbedUrl: locations?.bride_google_map_embed,
+          }}
+          groomInfo={{
+            title: locations?.groom_event_title,
+            location: locations?.groom_location,
+            address: locations?.groom_address,
+            mapEmbedUrl: locations?.groom_google_map_embed,
+          }}
+        />
 
-            <Hero
-                brideName={couple.bride_name}
-                groomName={couple.groom_name}
-                introDescription={couple.intro_description}
-                weddingDate={couple.wedding_date}
-                weddingTime={couple.wedding_time}
-                backgroundImage={heroBackground}
-            />
+        <Countdown
+          weddingDate={couple.wedding_date}
+          weddingTime={couple.wedding_time}
+        />
 
-            <div className="bg-white">
-            {(() => {
-                return (
-                    <LocationSection
-                        weddingDate={couple.wedding_date}
-                        weddingTime={couple.wedding_time}
-                        brideInfo={{
-                            title: locations?.bride_event_title,
-                            location: locations?.bride_location,
-                            address: locations?.bride_address,
-                            mapEmbedUrl: locations?.bride_google_map_embed,
-                        }}
-                        groomInfo={{
-                            title: locations?.groom_event_title,
-                            location: locations?.groom_location,
-                            address: locations?.groom_address,
-                            mapEmbedUrl: locations?.groom_google_map_embed,
-                        }}
-                    />
-                )
-            })()}
+        <Gallery images={manualGallery} />
 
-            <Countdown
-                weddingDate={couple.wedding_date}
-                weddingTime={couple.wedding_time}
-            />
+        <GiftSection couple={couple} weddingGift={weddingGift} />
 
-            <Gallery images={displayGallery} />
+        <RsvpSection
+          coupleId={couple.id}
+          brideAvatar="/wedding/bride.jpg"
+          groomAvatar="/wedding/groom.jpg"
+        />
 
-            <GiftSection couple={couple} weddingGift={weddingGift} />
+        <WishSection coupleId={couple.id} initialWishes={wishes || []} />
 
-            <RsvpSection
-                coupleId={couple.id}
-                brideAvatar={gallery?.[1]?.image_url || couple.bride_avatar}
-                groomAvatar={gallery?.[0]?.image_url || couple.groom_avatar}
-            />
+        <Footer
+          bride={couple.bride_name}
+          groom={couple.groom_name}
+          date={couple.wedding_date}
+        />
+      </div>
 
-            <WishSection coupleId={couple.id} initialWishes={wishes || []} />
-
-            <Footer
-                bride={couple.bride_name}
-                groom={couple.groom_name}
-                date={couple.wedding_date}
-            />
-            </div>
-
-            <AudioPlayer
-                musicUrl={couple.music_url}
-                delay={couple.music_delay}
-                volume={couple.music_volume}
-                autoplay={couple.music_autoplay}
-            />
-        </div>
-    )
+      <AudioPlayer
+        musicUrl={couple.music_url}
+        delay={couple.music_delay}
+        volume={couple.music_volume}
+        autoplay={couple.music_autoplay}
+      />
+    </div>
+  )
 }
