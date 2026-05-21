@@ -248,7 +248,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-sm text-[#7b5e4b] bg-white border-t border-amber-50">
-        <p>&copy; {new Date().getFullYear()} Thiệp Cưới Trực Tuyến. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Designed &amp; Developed by Hoàng Hải. All rights reserved.</p>
       </footer>
     </main>
   )
