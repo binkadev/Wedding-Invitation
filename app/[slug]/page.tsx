@@ -3,6 +3,9 @@ import { supabase } from '@/lib/supabaseClient'
 import { Couple, GalleryItem, Wish, WeddingGift, Location } from './templates/types'
 import { loadTemplate } from './templates/templateLoader'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function Page({
   params,
 }: {
