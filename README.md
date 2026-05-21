@@ -236,12 +236,12 @@ rsvp
 wedding_gifts
 ```
 
-Recommended setup files in this repository:
+Useful schema migration files kept in this repository:
 
 ```text
-database-setup.sql
 migration-locations.sql
 migration-gift-box.sql
+setup-auto-delete.sql
 ```
 
 Minimum expected data responsibilities:
