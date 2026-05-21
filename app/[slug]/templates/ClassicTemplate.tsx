@@ -20,7 +20,6 @@ const manualGroomAvatar = '/wedding/3.jpg'
 
 const manualGallery = [
   { id: 'manual-01', image_url: '/wedding/1.jpg', caption: 'Khoảnh khắc của cô dâu', objectPosition: 'center 35%' },
-  { id: 'manual-02', image_url: '/wedding/4.jpg', caption: 'Yêu thương và bình yên', objectPosition: 'center center' },
   { id: 'manual-03', image_url: '/wedding/3.jpg', caption: 'Khoảnh khắc của chú rể', objectPosition: 'center 35%' },
   { id: 'manual-04', image_url: '/wedding/5.jpg', caption: 'Cùng nhau đi qua những ngày đẹp nhất', objectPosition: 'center 35%' },
   { id: 'manual-05', image_url: '/wedding/6.jpg', caption: 'Mãi bên nhau', objectPosition: 'center 35%' },
