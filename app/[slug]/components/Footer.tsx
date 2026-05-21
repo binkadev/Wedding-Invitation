@@ -9,7 +9,7 @@ export default function Footer({ bride, groom, date }: { bride: string; groom: s
 
       <div className="mt-8 pt-5 border-t border-[#eadfd5]">
         <p className="text-[11px] uppercase tracking-[0.18em] text-[#9b7a64]">
-          © 2026 Designed &amp; Developed by Nhựt Hoàng
+          © 2026 Designed &amp; Developed by Hoàng Hải
         </p>
       </div>
     </footer>
