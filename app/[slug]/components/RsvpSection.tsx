@@ -9,9 +9,18 @@ export type RsvpSectionProps = {
     guestName?: string
     brideAvatar?: string | null
     groomAvatar?: string | null
+    brideAvatarPosition?: string | null
+    groomAvatarPosition?: string | null
 }
 
-export default function RsvpSection({ coupleId, guestName: initialGuestName = '', brideAvatar, groomAvatar }: RsvpSectionProps) {
+export default function RsvpSection({
+    coupleId,
+    guestName: initialGuestName = '',
+    brideAvatar,
+    groomAvatar,
+    brideAvatarPosition,
+    groomAvatarPosition,
+}: RsvpSectionProps) {
     const [guestName, setGuestName] = useState(initialGuestName)
     const [attendStatus, setAttendStatus] = useState<'Có' | 'Không' | 'Chưa chắc'>('Có')
     const [guestCount, setGuestCount] = useState<'1' | '2' | '3' | '4'>('1')
@@ -19,6 +28,9 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
 
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [toastMessage, setToastMessage] = useState('')
+
+    const brideImagePosition = brideAvatarPosition?.trim() || 'center 22%'
+    const groomImagePosition = groomAvatarPosition?.trim() || 'center 22%'
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -67,7 +79,6 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
 
                     <div className="bg-white/90 backdrop-blur rounded-[32px] shadow-[0_30px_60px_rgba(91,58,41,0.08)] border border-border-light p-6 md:p-10">
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            {/* Guest Name */}
                             <div>
                                 <label className="block text-sm font-medium text-primary mb-2">Họ và tên của bạn</label>
                                 <input
@@ -81,7 +92,6 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Attendance */}
                                 <div>
                                     <label className="block text-sm font-medium text-primary mb-2">Bạn sẽ đến chứ?</label>
                                     <select
@@ -95,7 +105,6 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                                     </select>
                                 </div>
 
-                                {/* Guest Count */}
                                 <div>
                                     <label className="block text-sm font-medium text-primary mb-2">Bạn đi bao nhiêu người?</label>
                                     <select
@@ -112,7 +121,6 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                                 </div>
                             </div>
 
-                            {/* Which Side */}
                             <div>
                                 <label className="block text-sm font-medium text-primary mb-3 text-center">Bạn là khách mời của ai?</label>
                                 <div className="grid grid-cols-2 gap-4">
@@ -123,7 +131,12 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                                         <input type="radio" name="side" value="Nhà trai" checked={side === 'Nhà trai'} onChange={() => setSide('Nhà trai')} className="sr-only" />
                                         <div className="aspect-square bg-accent-pale relative">
                                             {groomAvatar ? (
-                                                <img src={groomAvatar} alt="Chú rể" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                <img
+                                                    src={groomAvatar}
+                                                    alt="Chú rể"
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    style={{ objectPosition: groomImagePosition }}
+                                                />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center text-5xl">🤵‍♂️</div>
                                             )}
@@ -138,7 +151,12 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                                         <input type="radio" name="side" value="Nhà gái" checked={side === 'Nhà gái'} onChange={() => setSide('Nhà gái')} className="sr-only" />
                                         <div className="aspect-square bg-accent-pale relative">
                                             {brideAvatar ? (
-                                                <img src={brideAvatar} alt="Cô dâu" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                <img
+                                                    src={brideAvatar}
+                                                    alt="Cô dâu"
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    style={{ objectPosition: brideImagePosition }}
+                                                />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center text-5xl">👰‍♀️</div>
                                             )}
@@ -149,7 +167,6 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                                 </div>
                             </div>
 
-                            {/* Submit */}
                             <div className="pt-4">
                                 <button
                                     type="submit"
@@ -163,18 +180,15 @@ export default function RsvpSection({ coupleId, guestName: initialGuestName = ''
                     </div>
                 </Reveal>
 
-                {/* Toast Notification */}
-                {
-                    toastMessage && (
-                        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in-up">
-                            <div className="bg-primary text-bg-main px-6 py-3 rounded-full shadow-xl flex items-center gap-3">
-                                <span className="text-xl">{toastMessage.includes('lỗi') ? '⚠️' : '✅'}</span>
-                                <p className="text-sm font-medium">{toastMessage}</p>
-                            </div>
+                {toastMessage && (
+                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in-up">
+                        <div className="bg-primary text-bg-main px-6 py-3 rounded-full shadow-xl flex items-center gap-3">
+                            <span className="text-xl">{toastMessage.includes('lỗi') ? '⚠️' : '✅'}</span>
+                            <p className="text-sm font-medium">{toastMessage}</p>
                         </div>
-                    )
-                }
-            </div >
-        </section >
+                    </div>
+                )}
+            </div>
+        </section>
     )
 }
