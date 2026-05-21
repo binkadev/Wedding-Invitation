@@ -11,20 +11,23 @@ import AudioPlayer from '../components/AudioPlayer'
 import GiftSection from '../components/GiftSection'
 import { TemplateProps } from './types'
 
-const manualHeroBackground = '/wedding/hero.jpg'
+// Manual local images. Put files in public/wedding.
+// Use existing album images for hero and RSVP to avoid broken bride.jpg/groom.jpg/hero.jpg paths.
+const manualHeroBackground = '/wedding/4.jpg'
 const manualHeroPosition = 'center 35%'
+const manualBrideAvatar = '/wedding/1.jpg'
+const manualGroomAvatar = '/wedding/3.jpg'
 
 const manualGallery = [
-  { id: 'manual-01', image_url: '/wedding/1.jpg', caption: 'Khoảnh khắc của chúng mình', objectPosition: 'center center' },
-  { id: 'manual-02', image_url: '/wedding/2.jpg', caption: 'Cùng nhau đi qua những ngày đẹp nhất', objectPosition: 'center 35%' },
-  { id: 'manual-03', image_url: '/wedding/3.jpg', caption: 'Ngày hạnh phúc', objectPosition: 'center 40%' },
-  { id: 'manual-04', image_url: '/wedding/4.jpg', caption: 'Yêu thương và bình yên', objectPosition: 'center center' },
-  { id: 'manual-05', image_url: '/wedding/5.jpg', caption: 'Mãi bên nhau', objectPosition: 'center 30%' },
-  { id: 'manual-06', image_url: '/wedding/6.jpg', caption: 'Kỷ niệm của chúng mình', objectPosition: 'center 45%' },
-  { id: 'manual-07', image_url: '/wedding/7.jpg', caption: 'Một hành trình mới', objectPosition: 'center center' },
-  { id: 'manual-08', image_url: '/wedding/8.jpg', caption: 'The beginning of forever', objectPosition: 'center 35%' },
-  { id: 'manual-09', image_url: '/wedding/9.jpg', caption: 'The beginning of forever', objectPosition: 'center 40%' },
-  { id: 'manual-10', image_url: '/wedding/10.jpg', caption: 'The beginning of forever', objectPosition: 'center center' },
+  { id: 'manual-01', image_url: '/wedding/1.jpg', caption: 'Khoảnh khắc của cô dâu', objectPosition: 'center 35%' },
+  { id: 'manual-02', image_url: '/wedding/4.jpg', caption: 'Yêu thương và bình yên', objectPosition: 'center center' },
+  { id: 'manual-03', image_url: '/wedding/3.jpg', caption: 'Khoảnh khắc của chú rể', objectPosition: 'center 35%' },
+  { id: 'manual-04', image_url: '/wedding/5.jpg', caption: 'Cùng nhau đi qua những ngày đẹp nhất', objectPosition: 'center 35%' },
+  { id: 'manual-05', image_url: '/wedding/6.jpg', caption: 'Mãi bên nhau', objectPosition: 'center 35%' },
+  { id: 'manual-06', image_url: '/wedding/7.jpg', caption: 'Kỷ niệm của chúng mình', objectPosition: 'center 40%' },
+  { id: 'manual-07', image_url: '/wedding/8.jpg', caption: 'Một hành trình mới', objectPosition: 'center center' },
+  { id: 'manual-08', image_url: '/wedding/9.jpg', caption: 'The beginning of forever', objectPosition: 'center 35%' },
+  { id: 'manual-09', image_url: '/wedding/10.jpg', caption: 'The beginning of forever', objectPosition: 'center center' },
 ]
 
 export default function ClassicTemplate({
@@ -79,8 +82,8 @@ export default function ClassicTemplate({
 
         <RsvpSection
           coupleId={couple.id}
-          brideAvatar="/wedding/bride.jpg"
-          groomAvatar="/wedding/groom.jpg"
+          brideAvatar={manualBrideAvatar}
+          groomAvatar={manualGroomAvatar}
         />
 
         <WishSection coupleId={couple.id} initialWishes={wishes || []} />
