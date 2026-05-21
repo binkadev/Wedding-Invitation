@@ -15,6 +15,7 @@ import { TemplateProps } from './types'
 // Use existing album images for hero and RSVP to avoid broken bride.jpg/groom.jpg/hero.jpg paths.
 const manualHeroBackground = '/wedding/4.jpg'
 const manualHeroPosition = 'center 19%'
+const manualMobileHeroPosition = 'center 17%'
 const manualBrideAvatar = '/wedding/1.jpg'
 const manualBrideAvatarPosition = 'center 18%'
 const manualGroomAvatar = '/wedding/3.jpg'
@@ -52,6 +53,7 @@ export default function ClassicTemplate({
         weddingTime={couple.wedding_time}
         backgroundImage={manualHeroBackground}
         backgroundPosition={manualHeroPosition}
+        mobileBackgroundPosition={manualMobileHeroPosition}
       />
 
       <div className="bg-white">
