@@ -14,7 +14,7 @@ import { TemplateProps } from './types'
 // Manual local images. Put files in public/wedding.
 // Use existing album images for hero and RSVP to avoid broken bride.jpg/groom.jpg/hero.jpg paths.
 const manualHeroBackground = '/wedding/4.jpg'
-const manualHeroPosition = 'center 35%'
+const manualHeroPosition = 'center 19%'
 const manualBrideAvatar = '/wedding/1.jpg'
 const manualBrideAvatarPosition = 'center 18%'
 const manualGroomAvatar = '/wedding/3.jpg'
