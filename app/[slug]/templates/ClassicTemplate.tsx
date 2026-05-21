@@ -16,7 +16,9 @@ import { TemplateProps } from './types'
 const manualHeroBackground = '/wedding/4.jpg'
 const manualHeroPosition = 'center 35%'
 const manualBrideAvatar = '/wedding/1.jpg'
+const manualBrideAvatarPosition = 'center 18%'
 const manualGroomAvatar = '/wedding/3.jpg'
+const manualGroomAvatarPosition = 'center 18%'
 
 const manualGallery = [
   { id: 'manual-01', image_url: '/wedding/1.jpg', caption: 'Khoảnh khắc của cô dâu', objectPosition: 'center 35%' },
@@ -83,6 +85,8 @@ export default function ClassicTemplate({
           coupleId={couple.id}
           brideAvatar={manualBrideAvatar}
           groomAvatar={manualGroomAvatar}
+          brideAvatarPosition={manualBrideAvatarPosition}
+          groomAvatarPosition={manualGroomAvatarPosition}
         />
 
         <WishSection coupleId={couple.id} initialWishes={wishes || []} />
